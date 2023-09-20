@@ -1,7 +1,8 @@
 import "./index.css";
+import router from "./router";
 
 document.querySelector("#app").innerHTML = `
-  <div>
-    <h1>Hello world</h1>
-  </div>
+  <div id="container"></div>
 `;
+
+router();
