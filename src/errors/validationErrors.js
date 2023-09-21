@@ -1,3 +1,4 @@
-export let playerOneNameError = null;
-
-export let playerTwoNameError = null;
+export const validationErrors = {
+  playerOneNameError: null,
+  playerTwoNameError: null,
+};
