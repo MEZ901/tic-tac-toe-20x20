@@ -1,13 +1,12 @@
-import LoginLayout from "./layouts/LoginLayout";
+import PlayerSetupLayout from "./layouts/PlayerSetupLayout";
 
 const router = () => {
   const path = window.location.pathname;
-  console.log(path);
 
   switch (path) {
     case "/":
       document.querySelector("#container").innerHTML = `
-        ${LoginLayout()}
+        ${PlayerSetupLayout()}
       `;
       break;
     case "/about":
