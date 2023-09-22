@@ -59,6 +59,13 @@ export const handleClickStartButton = () => {
   updateURL("/game-play");
 };
 
+export const handleCellClick = (e) => {
+  const row = e.target.dataset.row;
+  const col = e.target.dataset.col;
+
+  console.log(`Cell clicked: Row ${row}, Column ${col}`);
+};
+
 const updateURL = (newURL) => {
   const currentState = history.state || {};
 

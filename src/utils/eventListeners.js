@@ -1,5 +1,6 @@
 import router from "../router";
 import {
+  handleCellClick,
   handleChangePlayerOneName,
   handleChangePlayerTwoName,
   handleClickStartButton,
@@ -22,6 +23,10 @@ const setupEventListeners = () => {
   document
     .getElementById("startButton")
     ?.addEventListener("click", handleClickStartButton);
+
+  document.querySelectorAll(".cell")?.forEach((cell) => {
+    cell.addEventListener("click", handleCellClick);
+  });
 };
 
 export default setupEventListeners;
