@@ -1,19 +1,27 @@
+import { currentPlayer } from "../utils/gameLogic";
+
 const GamePlayHeader = () => {
   const playerOneName = localStorage.getItem("playerOneName");
   const playerTwoName = localStorage.getItem("playerTwoName");
   return `
-    <div>
-        <h1 class="mb-4 mt-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl mx-auto text-center lg:px-12 flex flex-col sm:flex-row">
-            ${playerOneName}
-            <img
-                class="mx-3"
-                src="./src/assets/vs-thumbnail.png"
-                alt="Vs"
-                width="70"
-                class="mx-auto"
-            />
-            ${playerTwoName}
-        </h1>
+    <div class="flex items-center">
+      <div class="m-4 flex flex-col items-center text-2xl font-bold ${
+        currentPlayer === "X" ? "text-blue-500" : "text-black"
+      }">
+        <p class="font-bold">${playerOneName}</p>
+        <p>(X)</p>
+      </div>
+
+      <div class="m-4 flex flex-col items-center text-2xl">
+        <p>vs</p>
+      </div>
+
+      <div class="m-4 flex flex-col items-center text-2xl font-bold ${
+        currentPlayer === "O" ? "text-red-500" : "text-black"
+      }">
+        <p class="font-bold">${playerTwoName}</p>
+        <p>(O)</p>
+      </div>
     </div>
   `;
 };

@@ -3,6 +3,7 @@ import router from "../router";
 import {
   checkWin,
   isBoardFull,
+  isCellEmpty,
   makeMove,
   switchCurrentPlayer,
 } from "./gameLogic";
@@ -69,7 +70,19 @@ export const handleCellClick = (e) => {
   const row = parseInt(e.target.dataset.row);
   const col = parseInt(e.target.dataset.col);
 
-  makeMove(row, col);
+  if (isCellEmpty(row, col)) makeMove(row, col);
+  else {
+    validationErrors.cellNotEmpty = true;
+    router();
+
+    setTimeout(() => {
+      validationErrors.cellNotEmpty = false;
+      router();
+    }, 2000);
+
+    return;
+  }
+
   if (checkWin()) {
     console.log("won");
   } else if (isBoardFull()) {
