@@ -1,5 +1,11 @@
 import { validationErrors } from "../errors/validationErrors";
 import router from "../router";
+import {
+  checkWin,
+  isBoardFull,
+  makeMove,
+  switchCurrentPlayer,
+} from "./gameLogic";
 
 export const returnHome = () => {
   updateURL("/");
@@ -60,10 +66,19 @@ export const handleClickStartButton = () => {
 };
 
 export const handleCellClick = (e) => {
-  const row = e.target.dataset.row;
-  const col = e.target.dataset.col;
+  const row = parseInt(e.target.dataset.row);
+  const col = parseInt(e.target.dataset.col);
 
-  console.log(`Cell clicked: Row ${row}, Column ${col}`);
+  makeMove(row, col);
+  if (checkWin()) {
+    console.log("won");
+  } else if (isBoardFull()) {
+    console.log("the board is full");
+  } else {
+    switchCurrentPlayer();
+  }
+
+  router();
 };
 
 const updateURL = (newURL) => {
