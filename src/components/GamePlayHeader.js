@@ -1,9 +1,17 @@
 import { currentPlayer } from "../utils/gameLogic";
+import { playerOneName, playerTwoName } from "./PlayerSetup";
 
 const GamePlayHeader = () => {
-  const playerOneName = localStorage.getItem("playerOneName");
-  const playerTwoName = localStorage.getItem("playerTwoName");
-  return `
+  const winner = localStorage.getItem("winner");
+
+  if (winner !== "null") {
+    return `
+      <div class="flex items-center">
+        
+      </div>
+    `;
+  } else
+    return `
     <div class="flex items-center">
       <div class="m-4 flex flex-col items-center text-2xl font-bold ${
         currentPlayer === "X" ? "text-blue-500" : "text-black"
