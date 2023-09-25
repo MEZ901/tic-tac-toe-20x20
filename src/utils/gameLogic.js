@@ -1,5 +1,10 @@
+import { playerOneName, playerTwoName } from "../components/GamePlayHeader";
+
 const boardSize = 20;
+
 export let currentPlayer = "X";
+
+export let winner = null;
 
 export const board = Array.from({ length: boardSize }, () =>
   Array(boardSize).fill(null)
@@ -26,7 +31,10 @@ export const checkWin = (row, col) => {
         streak = 0;
       }
 
-      if (streak === 5) return true;
+      if (streak === 5) {
+        setWinner();
+        return true;
+      }
     }
   }
 
@@ -42,7 +50,10 @@ export const checkWin = (row, col) => {
         streak = 0;
       }
 
-      if (streak === 5) return true;
+      if (streak === 5) {
+        setWinner();
+        return true;
+      }
     }
   }
 
@@ -58,7 +69,10 @@ export const checkWin = (row, col) => {
         streak = 0;
       }
 
-      if (streak === 5) return true;
+      if (streak === 5) {
+        setWinner();
+        return true;
+      }
     }
   }
 
@@ -74,7 +88,10 @@ export const checkWin = (row, col) => {
         streak = 0;
       }
 
-      if (streak === 5) return true;
+      if (streak === 5) {
+        setWinner();
+        return true;
+      }
     }
   }
 
@@ -93,4 +110,16 @@ export const resetBoard = () => {
   board.forEach((row, rowIndex) => {
     row.fill(null);
   });
+};
+
+export const resetGame = () => {
+  currentPlayer = "X";
+  winner = null;
+  board.forEach((row, rowIndex) => {
+    row.fill(null);
+  });
+};
+
+const setWinner = () => {
+  winner = currentPlayer === "X" ? playerOneName : playerTwoName;
 };

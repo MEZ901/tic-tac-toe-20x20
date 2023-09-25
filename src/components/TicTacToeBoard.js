@@ -15,7 +15,7 @@ const TicTacToeBoard = () => {
           data-row="${i}"
           data-col="${j}"
         >
-            ${board[i][j] || ""}
+          ${board[i][j] || ""}
         </div>
       `;
     }

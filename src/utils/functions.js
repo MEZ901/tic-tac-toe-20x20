@@ -1,4 +1,3 @@
-import { playerOneName, playerTwoName } from "../components/PlayerSetup";
 import { validationErrors } from "../errors/validationErrors";
 import router from "../router";
 import {
@@ -7,10 +6,15 @@ import {
   isBoardFull,
   isCellEmpty,
   makeMove,
+  resetGame,
   switchCurrentPlayer,
 } from "./gameLogic";
 
 export const returnHome = () => {
+  resetGame();
+  localStorage.setItem("playerOneName", "");
+  localStorage.setItem("playerTwoName", "");
+
   updateURL("/");
 };
 
@@ -87,14 +91,9 @@ export const handleCellClick = (e) => {
 
   if (checkWin(row, col)) {
     console.log(`The winner is ${currentPlayer}`);
-    localStorage.setItem(
-      "winner",
-      currentPlayer === "X" ? playerOneName : playerTwoName
-    );
   } else if (isBoardFull()) {
     console.log("the board is full");
   } else {
-    localStorage.setItem("winner", null);
     switchCurrentPlayer();
   }
 
