@@ -1,4 +1,4 @@
-import { board } from "../utils/gameLogic";
+import { board, winner } from "../utils/gameLogic";
 
 const TicTacToeBoard = () => {
   const boardSize = 20;
@@ -9,9 +9,9 @@ const TicTacToeBoard = () => {
     for (let j = 0; j < boardSize; j++) {
       boardHTML += `
         <div
-          class="cell w-8 h-8 border border-gray-300 flex items-center justify-center cursor-pointer font-extrabold text-3xl ${
+          class="w-8 h-8 border border-gray-300 flex items-center justify-center cursor-pointer font-extrabold text-3xl ${
             board[i][j] === "X" ? "text-blue-500" : "text-red-500"
-          }"
+          } ${winner ? "" : "cell"}"
           data-row="${i}"
           data-col="${j}"
         >

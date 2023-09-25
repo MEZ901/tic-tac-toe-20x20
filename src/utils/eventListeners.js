@@ -4,6 +4,7 @@ import {
   handleChangePlayerOneName,
   handleChangePlayerTwoName,
   handleClickStartButton,
+  playAgain,
   returnHome,
 } from "./functions";
 
@@ -27,6 +28,8 @@ const setupEventListeners = () => {
   document.querySelectorAll(".cell")?.forEach((cell) => {
     cell.addEventListener("click", handleCellClick);
   });
+
+  document.getElementById("playAgain")?.addEventListener("click", playAgain);
 };
 
 export default setupEventListeners;

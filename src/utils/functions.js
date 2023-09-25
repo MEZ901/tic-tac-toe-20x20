@@ -18,6 +18,11 @@ export const returnHome = () => {
   updateURL("/");
 };
 
+export const playAgain = () => {
+  resetGame();
+  router();
+};
+
 export const handleChangePlayerOneName = (e) => {
   localStorage.setItem("playerOneName", e.target.value);
   validationErrors.playerOneNameError =
