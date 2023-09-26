@@ -19,78 +19,34 @@ export const switchCurrentPlayer = () => {
 };
 
 export const checkWin = (row, col) => {
-  let streak = 0;
+  const directions = [
+    [0, 1],
+    [1, 0],
+    [1, 1],
+    [1, -1],
+  ];
 
-  for (let i = col - 4; i <= col + 4; i++) {
-    if (i >= 0 && i < boardSize) {
-      if (board[row][i] === currentPlayer) {
-        if (streak < 5) {
-          streak++;
+  for (const [dx, dy] of directions) {
+    let streak = 0;
+
+    for (let i = -4; i <= 4; i++) {
+      const newRow = row + i * dx;
+      const newCol = col + i * dy;
+
+      if (
+        newRow >= 0 &&
+        newRow < boardSize &&
+        newCol >= 0 &&
+        newCol < boardSize &&
+        board[newRow][newCol] === currentPlayer
+      ) {
+        streak++;
+        if (streak === 5) {
+          setWinner();
+          return true;
         }
       } else {
         streak = 0;
-      }
-
-      if (streak === 5) {
-        setWinner();
-        return true;
-      }
-    }
-  }
-
-  streak = 0;
-
-  for (let i = row - 4; i <= row + 4; i++) {
-    if (i >= 0 && i < boardSize) {
-      if (board[i][col] === currentPlayer) {
-        if (streak < 5) {
-          streak++;
-        }
-      } else {
-        streak = 0;
-      }
-
-      if (streak === 5) {
-        setWinner();
-        return true;
-      }
-    }
-  }
-
-  streak = 0;
-
-  for (let i = row - 4, j = col - 4; i <= row + 4 && j <= col + 4; i++, j++) {
-    if (i >= 0 && i < boardSize && j >= 0 && j < boardSize) {
-      if (board[i][j] === currentPlayer) {
-        if (streak < 5) {
-          streak++;
-        }
-      } else {
-        streak = 0;
-      }
-
-      if (streak === 5) {
-        setWinner();
-        return true;
-      }
-    }
-  }
-
-  streak = 0;
-
-  for (let i = row - 4, j = col + 4; i <= row + 4 && j >= col - 4; i++, j--) {
-    if (i >= 0 && i < boardSize && j >= 0 && j < boardSize) {
-      if (board[i][j] === currentPlayer) {
-        if (streak < 5) {
-          streak++;
-        }
-      } else {
-        streak = 0;
-      }
-
-      if (streak === 5) {
-        setWinner();
-        return true;
       }
     }
   }
