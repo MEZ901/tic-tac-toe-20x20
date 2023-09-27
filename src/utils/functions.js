@@ -77,6 +77,10 @@ export const handleClickStartButton = () => {
   updateURL("/game-play");
 };
 
+export const handleClickHistoryButton = () => {
+  updateURL("/history");
+};
+
 export const handleCellClick = (e) => {
   const row = parseInt(e.target.dataset.row);
   const col = parseInt(e.target.dataset.col);

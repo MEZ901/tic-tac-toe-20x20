@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { playerOneName, playerTwoName } from "../components/GamePlayHeader";
 
 const boardSize = 20;
@@ -43,6 +44,7 @@ export const checkWin = (row, col) => {
         streak++;
         if (streak === 5) {
           setWinner();
+          setHistory();
           return true;
         }
       } else {
@@ -78,4 +80,19 @@ export const resetGame = () => {
 
 const setWinner = () => {
   winner = currentPlayer === "X" ? playerOneName : playerTwoName;
+};
+
+const setHistory = () => {
+  const existingHistory = localStorage.getItem("gameHistory");
+  const history = existingHistory ? JSON.parse(existingHistory) : [];
+
+  const result = {
+    players: `${playerOneName} vs ${playerTwoName}`,
+    winner: currentPlayer === "X" ? playerOneName : playerTwoName,
+    dateTime: dayjs().format("DD/MM/YYYY - HH:mm"),
+  };
+
+  history.push(result);
+
+  localStorage.setItem("gameHistory", JSON.stringify(history));
 };

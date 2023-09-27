@@ -3,6 +3,7 @@ import {
   handleCellClick,
   handleChangePlayerOneName,
   handleChangePlayerTwoName,
+  handleClickHistoryButton,
   handleClickStartButton,
   playAgain,
   returnHome,
@@ -24,6 +25,10 @@ const setupEventListeners = () => {
   document
     .getElementById("startButton")
     ?.addEventListener("click", handleClickStartButton);
+
+  document
+    .getElementById("HistoryButton")
+    ?.addEventListener("click", handleClickHistoryButton);
 
   document.querySelectorAll(".cell")?.forEach((cell) => {
     cell.addEventListener("click", handleCellClick);

@@ -79,6 +79,13 @@ const PlayerSetup = () => {
         >
           Start
         </button>
+        <button
+          type="button"
+          id="HistoryButton"
+          class="m-2 text-primary uppercase font-light text-sm"
+        >
+          See history
+        </button>
       </div>
     </section>
   `;
