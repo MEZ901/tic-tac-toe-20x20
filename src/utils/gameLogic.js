@@ -57,7 +57,11 @@ export const checkWin = (row, col) => {
 };
 
 export const isBoardFull = () => {
-  return board.every((row) => row.every((cell) => cell !== null));
+  if (board.every((row) => row.every((cell) => cell !== null))) {
+    setHistory();
+    return true;
+  }
+  return false;
 };
 
 export const isCellEmpty = (row, col) => {
@@ -88,7 +92,7 @@ const setHistory = () => {
 
   const result = {
     players: `${playerOneName} vs ${playerTwoName}`,
-    winner: currentPlayer === "X" ? playerOneName : playerTwoName,
+    winner: winner || "TIE",
     dateTime: dayjs().format("DD/MM/YYYY - HH:mm"),
   };
 
