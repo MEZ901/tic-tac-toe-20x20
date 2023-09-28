@@ -1,4 +1,4 @@
-import PlayerSetup from "../components/PlayerSetup";
+import PlayerSetup from "../components/setup/PlayerSetup";
 
 const PlayerSetupLayout = () => {
   return `

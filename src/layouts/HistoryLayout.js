@@ -1,5 +1,5 @@
-import BackHomeButton from "../components/BackHomeButton";
-import HistoryTable from "../components/HistoryTable";
+import BackHomeButton from "../components/common/BackHomeButton";
+import HistoryTable from "../components/history/HistoryTable";
 
 const HistoryLayout = () => {
   return `

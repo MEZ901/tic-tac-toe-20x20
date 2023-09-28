@@ -1,4 +1,4 @@
-import { board, winner } from "../utils/gameLogic";
+import { board, winner } from "../../utils/gameLogic";
 
 const TicTacToeBoard = () => {
   const boardSize = 20;

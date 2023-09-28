@@ -1,5 +1,8 @@
 import dayjs from "dayjs";
-import { playerOneName, playerTwoName } from "../components/GamePlayHeader";
+import {
+  playerOneName,
+  playerTwoName,
+} from "../components/gamePlay/GamePlayHeader";
 
 const boardSize = 20;
 

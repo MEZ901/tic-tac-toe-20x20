@@ -1,6 +1,6 @@
-import DangerAlert from "../components/DangerAlert";
-import GamePlayHeader from "../components/GamePlayHeader";
-import TicTacToeBoard from "../components/TicTacToeBoard";
+import DangerAlert from "../components/common/DangerAlert";
+import GamePlayHeader from "../components/gamePlay/GamePlayHeader";
+import TicTacToeBoard from "../components/gamePlay/TicTacToeBoard";
 import { validationErrors } from "../errors/validationErrors";
 
 const GamePlayLayout = () => {

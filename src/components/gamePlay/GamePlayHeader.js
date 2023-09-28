@@ -1,4 +1,4 @@
-import { currentPlayer, winner } from "../utils/gameLogic";
+import { currentPlayer, winner } from "../../utils/gameLogic";
 
 export let playerOneName;
 export let playerTwoName;

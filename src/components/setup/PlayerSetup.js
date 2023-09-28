@@ -1,4 +1,4 @@
-import { validationErrors } from "../errors/validationErrors";
+import { validationErrors } from "../../errors/validationErrors";
 
 const PlayerSetup = () => {
   const playerOneName = localStorage.getItem("playerOneName");
