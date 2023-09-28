@@ -1,5 +1,7 @@
 import router from "../router";
 import {
+  activeOnePlayerMode,
+  activeTwoPlayersMode,
   handleCellClick,
   handleChangePlayerOneName,
   handleChangePlayerTwoName,
@@ -13,6 +15,14 @@ const setupEventListeners = () => {
   window.addEventListener("popstate", router);
 
   document.getElementById("returnHome")?.addEventListener("click", returnHome);
+
+  document
+    .getElementById("twoPlayersMode")
+    ?.addEventListener("click", activeTwoPlayersMode);
+
+  document
+    .getElementById("onePlayerMode")
+    ?.addEventListener("click", activeOnePlayerMode);
 
   document
     .getElementById("playerOneName")

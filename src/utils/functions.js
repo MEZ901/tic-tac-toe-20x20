@@ -1,3 +1,4 @@
+import { mode } from "../components/setup/PlayerSetup";
 import { validationErrors } from "../errors/validationErrors";
 import router from "../router";
 import {
@@ -18,6 +19,16 @@ export const returnHome = () => {
   updateURL("/");
 };
 
+export const activeTwoPlayersMode = () => {
+  localStorage.setItem("mode", "twoPlayers");
+  router();
+};
+
+export const activeOnePlayerMode = () => {
+  localStorage.setItem("mode", "onePlayer");
+  router();
+};
+
 export const playAgain = () => {
   resetGame();
   router();
@@ -36,6 +47,8 @@ export const handleChangePlayerTwoName = (e) => {
 };
 
 export const handleClickStartButton = () => {
+  if (mode === "onePlayer") localStorage.setItem("playerTwoName", "computer");
+
   const playerOneName = localStorage.getItem("playerOneName");
   const playerTwoName = localStorage.getItem("playerTwoName");
 
