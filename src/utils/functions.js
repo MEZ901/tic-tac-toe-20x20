@@ -1,8 +1,8 @@
-import { mode } from "../components/setup/PlayerSetup";
 import { validationErrors } from "../errors/validationErrors";
 import router from "../router";
 import {
   checkWin,
+  computerTurn,
   currentPlayer,
   isBoardFull,
   isCellEmpty,
@@ -47,6 +47,7 @@ export const handleChangePlayerTwoName = (e) => {
 };
 
 export const handleClickStartButton = () => {
+  const mode = localStorage.getItem("mode");
   if (mode === "onePlayer") localStorage.setItem("playerTwoName", "computer");
 
   const playerOneName = localStorage.getItem("playerOneName");
@@ -95,6 +96,7 @@ export const handleClickHistoryButton = () => {
 };
 
 export const handleCellClick = (e) => {
+  const mode = localStorage.getItem("mode");
   const row = parseInt(e.target.dataset.row);
   const col = parseInt(e.target.dataset.col);
 
@@ -117,6 +119,7 @@ export const handleCellClick = (e) => {
     console.log("the board is full");
   } else {
     switchCurrentPlayer();
+    if (mode === "onePlayer") computerTurn();
   }
 
   router();

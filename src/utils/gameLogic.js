@@ -10,6 +10,8 @@ export let currentPlayer = "X";
 
 export let winner = null;
 
+export let isComputerTurn = false;
+
 export const board = Array.from({ length: boardSize }, () =>
   Array(boardSize).fill(null)
 );
@@ -102,4 +104,27 @@ const setHistory = () => {
   history.push(result);
 
   localStorage.setItem("gameHistory", JSON.stringify(history));
+};
+
+export const computerTurn = () => {
+  // isComputerTurn = true;
+  const bestMove = findBestMove();
+  makeMove(bestMove.row, bestMove.col);
+
+  if (checkWin(bestMove.row, bestMove.col)) {
+    console.log(`The winner is ${currentPlayer}`);
+  } else if (isBoardFull()) {
+    console.log("the board is full");
+  } else {
+    switchCurrentPlayer();
+  }
+
+  console.log(findBestMove());
+};
+
+const findBestMove = () => {
+  return {
+    row: 0,
+    col: 0,
+  };
 };

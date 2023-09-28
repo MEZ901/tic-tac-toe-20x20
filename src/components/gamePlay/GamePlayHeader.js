@@ -2,10 +2,12 @@ import { currentPlayer, winner } from "../../utils/gameLogic";
 
 export let playerOneName;
 export let playerTwoName;
+export let mode;
 
 const GamePlayHeader = () => {
   playerOneName = localStorage.getItem("playerOneName");
   playerTwoName = localStorage.getItem("playerTwoName");
+  mode = localStorage.getItem("mode");
 
   if (winner === null)
     return `

@@ -2,10 +2,8 @@ import TwoPlayersForm from "./TwoPlayersForm";
 import OnePlayerForm from "./OnePlayerForm";
 import SelectMode from "./SelectMode";
 
-export let mode;
-
 const PlayerSetup = () => {
-  mode = localStorage.getItem("mode");
+  let mode = localStorage.getItem("mode");
   return `
     <section class="bg-white border border-gray-200 flex flex-col items-center justify-center px-4 md:px-8 lg:px-12 py-8 rounded-lg shadow-2xl">
       <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
