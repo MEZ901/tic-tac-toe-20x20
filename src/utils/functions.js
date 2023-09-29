@@ -2,7 +2,7 @@ import { validationErrors } from "../errors/validationErrors";
 import router from "../router";
 import {
   checkWin,
-  computerTurn,
+  computerMove,
   currentPlayer,
   isBoardFull,
   isCellEmpty,
@@ -119,7 +119,7 @@ export const handleCellClick = (e) => {
     console.log("the board is full");
   } else {
     switchCurrentPlayer();
-    if (mode === "onePlayer") computerTurn();
+    if (mode === "onePlayer") computerMove(row, col);
   }
 
   router();

@@ -9,9 +9,9 @@ const TicTacToeBoard = () => {
     for (let j = 0; j < boardSize; j++) {
       boardHTML += `
         <div
-          class="w-8 h-8 border border-gray-300 flex items-center justify-center cursor-pointer font-extrabold text-3xl ${
+          class='w-8 h-8 border border-gray-300 flex items-center justify-center cursor-pointer font-extrabold text-3xl ${
             board[i][j] === "X" ? "text-blue-500" : "text-red-500"
-          } ${winner || isComputerTurn ? "" : "cell"}"
+          } ${winner || isComputerTurn ? "" : "cell"}'
           data-row="${i}"
           data-col="${j}"
         >
