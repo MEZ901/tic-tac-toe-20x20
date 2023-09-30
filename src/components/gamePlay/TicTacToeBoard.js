@@ -1,4 +1,4 @@
-import { board, isComputerTurn, winner } from "../../utils/gameLogic";
+import { board, isComputerTurn, winner } from "../../features/gameState";
 
 const TicTacToeBoard = () => {
   const boardSize = 20;
@@ -11,7 +11,7 @@ const TicTacToeBoard = () => {
         <div
           class='w-8 h-8 border border-gray-300 flex items-center justify-center cursor-pointer font-extrabold text-3xl ${
             board[i][j] === "X" ? "text-blue-500" : "text-red-500"
-          } ${winner || isComputerTurn ? "" : "cell"}'
+          } ${winner() || isComputerTurn() ? "" : "cell"}'
           data-row="${i}"
           data-col="${j}"
         >

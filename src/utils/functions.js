@@ -2,19 +2,25 @@ import { validationErrors } from "../errors/validationErrors";
 import router from "../router";
 import {
   checkWin,
-  computerMove,
-  currentPlayer,
   isBoardFull,
   isCellEmpty,
   makeMove,
   resetGame,
+  setHistory,
   switchCurrentPlayer,
-} from "./gameLogic";
+} from "../features/gameLogic";
+import { computerMove } from "../features/onePlayerMode";
+import { currentPlayer, setWinner } from "../features/gameState";
+import {
+  playerOneName,
+  playerTwoName,
+} from "../components/gamePlay/GamePlayHeader";
 
 export const returnHome = () => {
   resetGame();
   localStorage.setItem("playerOneName", "");
   localStorage.setItem("playerTwoName", "");
+  localStorage.setItem("mode", "");
 
   updateURL("/");
 };
@@ -114,12 +120,16 @@ export const handleCellClick = (e) => {
   }
 
   if (checkWin(row, col)) {
-    console.log(`The winner is ${currentPlayer}`);
+    setWinner(currentPlayer() === "X" ? playerOneName : playerTwoName);
+    setHistory();
+    console.log(`The winner is ${currentPlayer()}`);
   } else if (isBoardFull()) {
     console.log("the board is full");
   } else {
     switchCurrentPlayer();
-    if (mode === "onePlayer") computerMove(row, col);
+    if (mode === "onePlayer") {
+      computerMove(row, col);
+    }
   }
 
   router();
