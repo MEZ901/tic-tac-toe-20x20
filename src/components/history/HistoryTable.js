@@ -27,6 +27,7 @@ const HistoryTable = () => {
             </tr>
           `,
         ];
+
   return `
     <table class="min-w-full text-sm font-light">
       <thead class="border-b font-medium">
