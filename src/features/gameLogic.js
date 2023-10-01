@@ -8,6 +8,7 @@ import {
   board,
   currentPlayer,
   setCurrentPlayer,
+  setIsGameOver,
   setWinner,
   winner,
 } from "./gameState";
@@ -20,7 +21,7 @@ export const switchCurrentPlayer = () => {
   setCurrentPlayer(currentPlayer() === "X" ? "O" : "X");
 };
 
-export const checkWin = (row, col) => {
+export const checkWin = (row, col, player) => {
   const directions = [
     [0, 1],
     [1, 0],
@@ -40,7 +41,7 @@ export const checkWin = (row, col) => {
         newRow < BOARD_SIZE &&
         newCol >= 0 &&
         newCol < BOARD_SIZE &&
-        board[newRow][newCol] === currentPlayer()
+        board[newRow][newCol] === player
       ) {
         streak++;
         if (streak === 5) return true;
@@ -68,6 +69,7 @@ export const isCellEmpty = (row, col) => {
 export const resetGame = () => {
   setCurrentPlayer("X");
   setWinner(null);
+  setIsGameOver(false);
   board.forEach((row) => {
     row.fill(null);
   });

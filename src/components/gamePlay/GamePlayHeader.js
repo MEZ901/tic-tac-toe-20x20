@@ -1,4 +1,4 @@
-import { currentPlayer, winner } from "../../features/gameState";
+import { currentPlayer, isGameOver, winner } from "../../features/gameState";
 
 export let playerOneName;
 export let playerTwoName;
@@ -9,7 +9,7 @@ const GamePlayHeader = () => {
   playerTwoName = localStorage.getItem("playerTwoName");
   mode = localStorage.getItem("mode");
 
-  if (winner() === null)
+  if (winner() === null && !isGameOver())
     return `
       <div class="flex items-center">
         <div class='m-4 flex flex-col items-center text-2xl font-bold ${
@@ -31,7 +31,7 @@ const GamePlayHeader = () => {
         </div>
       </div>
     `;
-  else if (winner() === "draw")
+  else if (winner() === null && isGameOver())
     return `
       <div class="flex items-center">
         <div class="m-4 flex flex-col items-center">

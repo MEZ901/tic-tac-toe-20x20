@@ -10,7 +10,12 @@ import {
   switchCurrentPlayer,
 } from "../features/gameLogic";
 import { computerMove } from "../features/onePlayerMode";
-import { currentPlayer, setWinner } from "../features/gameState";
+import {
+  currentPlayer,
+  setIsComputerTurn,
+  setIsGameOver,
+  setWinner,
+} from "../features/gameState";
 import {
   playerOneName,
   playerTwoName,
@@ -119,16 +124,22 @@ export const handleCellClick = (e) => {
     return;
   }
 
-  if (checkWin(row, col)) {
+  if (checkWin(row, col, currentPlayer())) {
     setWinner(currentPlayer() === "X" ? playerOneName : playerTwoName);
     setHistory();
     console.log(`The winner is ${currentPlayer()}`);
   } else if (isBoardFull()) {
-    console.log("the board is full");
+    setIsGameOver(true);
+    console.log("Draw");
   } else {
     switchCurrentPlayer();
     if (mode === "onePlayer") {
-      computerMove(row, col);
+      setIsComputerTurn(true);
+      setTimeout(() => {
+        computerMove(row, col);
+        setIsComputerTurn(false);
+        router();
+      }, 0);
     }
   }
 
